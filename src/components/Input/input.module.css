@@ -1,0 +1,50 @@
+.Textarea {
+    padding: 1rem 1.25rem 1rem 1.25rem;
+    border-radius: 25px;
+    min-height: 100px;
+    width: 100%;
+    scrollbar-gutter: stable;
+    scroll-margin: 30px;
+    resize: both !important;
+}
+
+.Textarea::-webkit-scrollbar-thumb {
+    background-color: #86b7fe;
+    border-radius: 25px;
+}
+
+.Textarea::-webkit-scrollbar {
+    width: 13px;
+}
+
+.Textarea::-webkit-scrollbar-track-piece:end {
+    margin-bottom: 10px;
+}
+
+.Textarea::-webkit-scrollbar-track-piece:start {
+    margin-top: 10px;
+}
+
+.Textarea::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 25px;
+}
+
+.Textarea::-webkit-resizer {
+    background-color: transparent;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent #4f96ff #4f96ff transparent;
+}
+
+.TextareaLabel {
+    padding: 0 1.25rem 0 1.25rem;
+}
+
+.Textarea:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, .25);
+}
