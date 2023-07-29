@@ -12,13 +12,7 @@
     "48": "logo192.png",
     "128": "logo192.png"
   },
-  "permissions": [
-    "storage",
-    "tabs",
-    "windows",
-    "activeTab",
-    "scripting"
-  ],
+  "permissions": ["storage", "tabs", "windows", "activeTab", "scripting"],
   "background": {
     "service_worker": "./static/js/background.js",
     "type": "module"

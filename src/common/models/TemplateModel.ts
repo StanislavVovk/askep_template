@@ -1,4 +1,4 @@
-export type TemplateModel = {
-    templateName: string
-    symptoms: string[]
+export interface TemplateModel {
+  templateName: string
+  symptoms: string[]
 }
