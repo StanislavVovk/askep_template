@@ -1,9 +1,9 @@
-export type SymptomGroup = {
-    symptom: string
-    symptomClassName: string
+export interface SymptomGroup {
+  symptom: string
+  symptomClassName: string
 }
 
-export type SymptomsModel = {
-    symptomGroupName: string
-    symptoms: SymptomGroup[]
+export interface SymptomsModel {
+  symptomGroupName: string
+  symptoms: SymptomGroup[]
 }

@@ -1,26 +1,25 @@
-import type {FC} from 'react';
-import {useState} from "react";
-import {SymptomGroup} from "../../common/common";
-import {Form} from "react-bootstrap";
+import type { FC } from 'react';
+import { useState } from 'react';
+import { type SymptomGroup } from '../../common/common';
+import { Form } from 'react-bootstrap';
 
 interface ICheckboxProps {
-    symptomData: SymptomGroup
+  symptomData: SymptomGroup
 }
 
-export const Checkbox: FC<ICheckboxProps> = ({symptomData}) => {
+export const Checkbox: FC<ICheckboxProps> = ({ symptomData }) => {
+  const [checkboxStatus, setCheckboxStatus] = useState(false);
 
-    const [checkboxStatus, setCheckboxStatus] = useState(false)
-
-    // todo change handler. Need to add checkbox value
-    const handleCheckboxClick = () => {
-        setCheckboxStatus(!checkboxStatus)
-    }
-    return (
-            <Form.Check
-                type="checkbox"
-                id={symptomData.symptomClassName}
-                onChange={handleCheckboxClick}
-                label={symptomData.symptom}
-            />
-    );
+  // todo change handler. Need to add checkbox value
+  const handleCheckboxClick = () => {
+    setCheckboxStatus(!checkboxStatus);
+  };
+  return (
+    <Form.Check
+      type="checkbox"
+      id={symptomData.symptomClassName}
+      onChange={handleCheckboxClick}
+      label={symptomData.symptom}
+    />
+  );
 };
