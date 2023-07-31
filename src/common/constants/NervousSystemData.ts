@@ -1,4 +1,4 @@
-import { type SymptomsModel } from '../models/SymptomsModel';
+import { type SymptomsModel } from '../models/SymptomsModel'
 
 export const NervousSystemData: SymptomsModel = {
   symptomGroupName: 'Нервова система',
@@ -46,4 +46,4 @@ export const NervousSystemData: SymptomsModel = {
       symptomClassName: 'conclusion_prev_nerv_sys_12'
     }
   ]
-};
+}

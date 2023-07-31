@@ -1,4 +1,4 @@
-import { type SymptomsModel } from '../models/SymptomsModel';
+import { type SymptomsModel } from '../models/SymptomsModel'
 
 export const GastroSystemData: SymptomsModel = {
   symptomGroupName: 'Шлунково-кишковий тракт',
@@ -44,4 +44,4 @@ export const GastroSystemData: SymptomsModel = {
       symptomClassName: 'conclusion_prev_gastro_sys_10'
     }
   ]
-};
+}

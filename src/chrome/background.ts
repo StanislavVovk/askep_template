@@ -1,4 +1,4 @@
-export {};
+export {}
 chrome.runtime.onInstalled.addListener(() => {
-  console.log('here I am');
-});
+  console.log('here I am')
+})

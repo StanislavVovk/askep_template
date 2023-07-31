@@ -1,4 +1,4 @@
-import { type SymptomsModel } from '../models/SymptomsModel';
+import { type SymptomsModel } from '../models/SymptomsModel'
 
 export const Abdomen: SymptomsModel = {
   symptomGroupName: 'Живіт',
@@ -20,4 +20,4 @@ export const Abdomen: SymptomsModel = {
       symptomClassName: 'conclusion_prev_abdomen_4'
     }
   ]
-};
+}

@@ -1,8 +1,8 @@
-import type { FC } from 'react';
-import { Accordion } from 'react-bootstrap';
-import type { SymptomsModel } from '../../common/common';
-import { Checkbox } from '../common';
-import style from './symptomsAccordion.module.css';
+import type { FC } from 'react'
+import { Accordion } from 'react-bootstrap'
+import type { SymptomsModel } from '../../common/common'
+import { Checkbox } from '../common'
+import style from './symptomsAccordion.module.css'
 interface ISymptomsAccordion {
   symptomsAccordionData: SymptomsModel
 }
@@ -23,5 +23,5 @@ export const SymptomsAccordion: FC<ISymptomsAccordion> = ({
         ))}
       </Accordion.Body>
     </Accordion>
-  );
-};
+  )
+}

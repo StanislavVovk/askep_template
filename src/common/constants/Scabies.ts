@@ -1,4 +1,4 @@
-import { type SymptomsModel } from '../models/SymptomsModel';
+import { type SymptomsModel } from '../models/SymptomsModel'
 
 export const Scabies: SymptomsModel = {
   symptomGroupName: 'Огляд на коросту',
@@ -12,4 +12,4 @@ export const Scabies: SymptomsModel = {
       symptomClassName: 'conclusion_prev_scabies'
     }
   ]
-};
+}

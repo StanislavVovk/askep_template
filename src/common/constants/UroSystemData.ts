@@ -1,4 +1,4 @@
-import { type SymptomsModel } from '../models/SymptomsModel';
+import { type SymptomsModel } from '../models/SymptomsModel'
 
 export const UroSystemData: SymptomsModel = {
   symptomGroupName: 'Сечовидільна система',
@@ -32,4 +32,4 @@ export const UroSystemData: SymptomsModel = {
       symptomClassName: 'conclusion_prev_urina_sys_7'
     }
   ]
-};
+}

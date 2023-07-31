@@ -1,4 +1,4 @@
-import { type SymptomsModel } from '../models/SymptomsModel';
+import { type SymptomsModel } from '../models/SymptomsModel'
 
 export const MusculoskeletalSystemData: SymptomsModel = {
   symptomGroupName: 'Опорно-рухова система',
@@ -20,4 +20,4 @@ export const MusculoskeletalSystemData: SymptomsModel = {
       symptomClassName: 'conclusion_prev_muscul_sys_4'
     }
   ]
-};
+}

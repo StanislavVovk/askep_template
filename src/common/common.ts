@@ -1,7 +1,7 @@
-import { RoutesEnum } from './enums/Routes';
+import { RoutesEnum } from './enums/Routes'
 
-import { type TemplateModel } from './models/TemplateModel';
-import { type SymptomGroup, type SymptomsModel } from './models/SymptomsModel';
+import { type TemplateModel } from './models/TemplateModel'
+import { type SymptomGroup, type SymptomsModel } from './models/SymptomsModel'
 import {
   CardioSystemData,
   EndocrineSystemData,
@@ -24,7 +24,7 @@ import {
   Allergy,
   Scabies,
   Pediculosis
-} from './constants/common';
+} from './constants/common'
 
 export {
   RoutesEnum,
@@ -49,6 +49,6 @@ export {
   Allergy,
   Scabies,
   Pediculosis
-};
+}
 
-export type { TemplateModel, SymptomsModel, SymptomGroup };
+export type { TemplateModel, SymptomsModel, SymptomGroup }

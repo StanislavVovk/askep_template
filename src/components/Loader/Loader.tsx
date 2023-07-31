@@ -1,4 +1,4 @@
-import { Spinner } from 'react-bootstrap';
+import { Spinner } from 'react-bootstrap'
 
 export const Loader = () => {
   return (
@@ -8,5 +8,5 @@ export const Loader = () => {
       <Spinner variant={'primary'} animation={'border'} />
       <h1>Wait a while</h1>
     </div>
-  );
-};
+  )
+}

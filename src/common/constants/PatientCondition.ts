@@ -1,4 +1,4 @@
-import { type SymptomsModel } from '../models/SymptomsModel';
+import { type SymptomsModel } from '../models/SymptomsModel'
 
 export const PatientCondition: SymptomsModel = {
   symptomGroupName: 'Загальний стан',
@@ -20,4 +20,4 @@ export const PatientCondition: SymptomsModel = {
       symptomClassName: 'conclusion_prev_object_condition_state'
     }
   ]
-};
+}

@@ -1,5 +1,5 @@
-import { Container, Nav, Navbar } from 'react-bootstrap';
-import { RoutesEnum } from '../../common/common';
+import { Container, Nav, Navbar } from 'react-bootstrap'
+import { RoutesEnum } from '../../common/common'
 
 export const NavBar = () => {
   return (
@@ -15,5 +15,5 @@ export const NavBar = () => {
         </Nav>
       </Container>
     </Navbar>
-  );
-};
+  )
+}

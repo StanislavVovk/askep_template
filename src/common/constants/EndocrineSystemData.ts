@@ -1,4 +1,4 @@
-import { type SymptomsModel } from '../models/SymptomsModel';
+import { type SymptomsModel } from '../models/SymptomsModel'
 
 export const EndocrineSystemData: SymptomsModel = {
   symptomGroupName: 'Ендокринна система',
@@ -24,4 +24,4 @@ export const EndocrineSystemData: SymptomsModel = {
       symptomClassName: 'conclusion_prev_endocrin_sys_5'
     }
   ]
-};
+}

@@ -1,4 +1,4 @@
-import { type SymptomsModel } from '../models/SymptomsModel';
+import { type SymptomsModel } from '../models/SymptomsModel'
 
 export const Allergy: SymptomsModel = {
   symptomGroupName: 'Алергічні реакції',
@@ -16,4 +16,4 @@ export const Allergy: SymptomsModel = {
       symptomClassName: 'conclusion_prev_allergical_reaction_3'
     }
   ]
-};
+}

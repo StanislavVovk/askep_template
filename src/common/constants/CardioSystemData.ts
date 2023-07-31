@@ -1,4 +1,4 @@
-import { type SymptomsModel } from '../models/SymptomsModel';
+import { type SymptomsModel } from '../models/SymptomsModel'
 
 export const CardioSystemData: SymptomsModel = {
   symptomGroupName: 'Серцево-судинна система',
@@ -36,4 +36,4 @@ export const CardioSystemData: SymptomsModel = {
       symptomClassName: 'conclusion_prev_cardio_sys_8'
     }
   ]
-};
+}

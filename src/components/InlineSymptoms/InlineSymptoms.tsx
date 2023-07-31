@@ -3,44 +3,58 @@ import style from './inlineSymptoms.module.css';
 import type { FC, InputHTMLAttributes } from 'react';
 import { type SymptomsModel } from '../../common/common';
 import { Checkbox, InputField, Radiobutton } from '../common';
+import { useState } from 'react';
 
 interface IInlineSymptomsProps
   extends InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
-  symptomsData: SymptomsModel
-  isCheckbox?: boolean
-  isInputField: boolean
-  isTextarea?: boolean
-  fieldCaption?: string
+  hasLabel: boolean;
+  symptomsData: SymptomsModel;
+  isCheckbox?: boolean;
+  isInputField: boolean;
+  isTextarea?: boolean;
+  fieldCaption?: string;
 }
 
 // todo think about solution of this case
 export const InlineSymptoms: FC<IInlineSymptomsProps> = ({
-  symptomsData,
-  isCheckbox = true,
-  fieldCaption,
-  isInputField,
-  isTextarea,
-  ...props
-}) => {
+                                                           hasLabel,
+                                                           symptomsData,
+                                                           isCheckbox = true,
+                                                           fieldCaption,
+                                                           isInputField,
+                                                           isTextarea,
+                                                           ...props
+                                                         }) => {
+  const [inputFieldValue, changeInputFieldValue] = useState<string>('');
+
+  const handleDataReceive = (data: string) => {
+    changeInputFieldValue(data)
+  }
+
   return (
     <div className={`${style.SymptomsList} mt-3 mb-3`}>
       <h4 className={'fs-5 fw-bold'}>{symptomsData.symptomGroupName}:</h4>
       <div className={'d-flex flex-row text-nowrap flex-wrap'}>
         {isCheckbox
-          ? symptomsData.symptoms.map((symptom, id) => (
-              <Checkbox key={id} symptomData={symptom} />
+          ?
+          symptomsData.symptoms.map((symptom, id) => (
+            <Checkbox key={id} symptomData={symptom} />
           ))
-          : symptomsData.symptoms.map((symptom, id) => (
-              <Radiobutton key={id} id={id} symptomData={symptom} />
+          :
+          symptomsData.symptoms.map((symptom, id) => (
+            <Radiobutton key={id} id={id} symptomData={symptom} />
           ))}
       </div>
-      {isInputField ?? (
+      {isInputField
+        ?
         <InputField
+          hasLabel={hasLabel}
           fieldCaption={fieldCaption}
           isTextarea={isTextarea}
           {...props}
         />
-      )}
+        :
+        ''}
     </div>
   );
 };

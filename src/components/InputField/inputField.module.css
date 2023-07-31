@@ -1,7 +1,7 @@
-.InputFieldLabel {
+.Textarea {
   padding: 1rem 1.25rem 1rem 1.25rem;
   border-radius: 25px;
-  min-height: 100px;
+  min-height: 50px;
   width: 100%;
   scrollbar-gutter: stable;
   scroll-margin: 30px;
@@ -37,7 +37,7 @@
   border-color: transparent #4f96ff #4f96ff transparent;
 }
 
-.TextareaLabel {
+.InputFieldLabel {
   padding: 0 1.25rem 0 1.25rem;
 }
 

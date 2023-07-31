@@ -1,4 +1,4 @@
-import { type SymptomsModel } from '../models/SymptomsModel';
+import { type SymptomsModel } from '../models/SymptomsModel'
 
 export const HeartTones: SymptomsModel = {
   symptomGroupName: 'Тони серця',
@@ -28,4 +28,4 @@ export const HeartTones: SymptomsModel = {
       symptomClassName: 'conclusion_prev_ausc_heart_6'
     }
   ]
-};
+}

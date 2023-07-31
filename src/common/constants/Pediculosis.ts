@@ -1,4 +1,4 @@
-import { type SymptomsModel } from '../models/SymptomsModel';
+import { type SymptomsModel } from '../models/SymptomsModel'
 
 export const Pediculosis: SymptomsModel = {
   symptomGroupName: 'Огляд на педикульоз',
@@ -12,4 +12,4 @@ export const Pediculosis: SymptomsModel = {
       symptomClassName: 'conclusion_prev_pediculosis'
     }
   ]
-};
+}

@@ -1,6 +1,6 @@
-import { Container } from 'react-bootstrap';
-import { SymptomsAccordion } from '../components/SymptomsAccordion/SymptomsAccordion';
-import { InlineSymptoms, InputField } from '../components/common';
+import { Container } from 'react-bootstrap'
+import { SymptomsAccordion } from '../components/SymptomsAccordion/SymptomsAccordion'
+import { InlineSymptoms, InputField } from '../components/common'
 import {
   Abdomen,
   Allergy,
@@ -23,9 +23,10 @@ import {
   SkinAndMucousMembranes,
   Tongue,
   UroSystemData
-} from '../common/common';
+} from '../common/common'
 
 export const TemplateEditor = () => {
+  // todo fix problems with status localis component
   return (
     <Container className={'w-100'}>
       <div>
@@ -39,6 +40,7 @@ export const TemplateEditor = () => {
           <SymptomsAccordion symptomsAccordionData={UroSystemData} />
           <SymptomsAccordion symptomsAccordionData={EndocrineSystemData} />
           <InputField
+            hasLabel={true}
             fieldCaption={'Опишіть додаткові скарги пацієнта'}
             isTextarea
           />
@@ -46,11 +48,13 @@ export const TemplateEditor = () => {
             symptomsAccordionData={MusculoskeletalSystemData}
           />
           <InputField
+            hasLabel
             fieldCaption={
               'Опишіть додаткові скарги пацієнта з опорно-рухової системи'
             }
           />
           <InlineSymptoms
+            hasLabel
             symptomsData={AnamnesisVitae}
             isInputField={true}
             fieldCaption={
@@ -58,41 +62,79 @@ export const TemplateEditor = () => {
             }
           />
           <InlineSymptoms
+            hasLabel={false}
             symptomsData={PatientCondition}
             isCheckbox={false}
             isInputField={true}
           />
           <InlineSymptoms
+            hasLabel={false}
             symptomsData={PatientConscience}
             isCheckbox={true}
             isInputField={true}
           />
           <InlineSymptoms
+            hasLabel={false}
             symptomsData={SkinAndMucousMembranes}
             isInputField={true}
           />
           <InlineSymptoms
+            hasLabel={false}
             symptomsData={AuscultationLungs}
             isInputField={true}
           />
-          <InlineSymptoms symptomsData={HeartTones} isInputField={true} />
-          <InlineSymptoms symptomsData={Tongue} isInputField={true} />
-          <InlineSymptoms symptomsData={Abdomen} isInputField={true} />
-          <InlineSymptoms symptomsData={Liver} isInputField={true} />
-          <InlineSymptoms symptomsData={Kidney} isInputField={true} />
           <InlineSymptoms
+            hasLabel={false}
+            symptomsData={HeartTones}
+            isInputField={true}
+          />
+          <InlineSymptoms
+            hasLabel={false}
+            symptomsData={Tongue}
+            isInputField={true}
+          />
+          <InlineSymptoms
+            hasLabel={false}
+            symptomsData={Abdomen}
+            isInputField={true}
+          />
+          <InlineSymptoms
+            hasLabel={false}
+            symptomsData={Liver}
+            isInputField={true}
+          />
+          <InlineSymptoms
+            hasLabel={false}
+            symptomsData={Kidney}
+            isInputField={true}
+          />
+          <InlineSymptoms
+            hasLabel={false}
             symptomsData={CentralNervousSystemDamage}
             isInputField={true}
           />
           <InputField
+            hasLabel={true}
             fieldCaption={'Місцевий стан'}
             placeholder={'Опишіть status localis'}
           />
-          <InlineSymptoms symptomsData={Allergy} isInputField={true} />
-          <InlineSymptoms symptomsData={Scabies} isInputField={false} />
-          <InlineSymptoms symptomsData={Pediculosis} isInputField={false} />
+          <InlineSymptoms
+            hasLabel={false}
+            symptomsData={Allergy}
+            isInputField={true}
+          />
+          <InlineSymptoms
+            hasLabel={false}
+            symptomsData={Scabies}
+            isInputField={false}
+          />
+          <InlineSymptoms
+            hasLabel={false}
+            symptomsData={Pediculosis}
+            isInputField={false}
+          />
         </Container>
       </div>
     </Container>
-  );
-};
+  )
+}

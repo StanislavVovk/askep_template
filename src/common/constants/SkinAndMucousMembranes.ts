@@ -1,4 +1,4 @@
-import { type SymptomsModel } from '../models/SymptomsModel';
+import { type SymptomsModel } from '../models/SymptomsModel'
 
 export const SkinAndMucousMembranes: SymptomsModel = {
   symptomGroupName: 'Шкіра та видимі слизові',
@@ -56,4 +56,4 @@ export const SkinAndMucousMembranes: SymptomsModel = {
       symptomClassName: 'conclusion_prev_skin_mucous_13'
     }
   ]
-};
+}

@@ -2,6 +2,7 @@
   "name": "askep_template_processor",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@craco/craco": "^7.1.0",
     "@types/chrome": "latest",
@@ -14,8 +15,7 @@
     "react-chrome-extension-router": "^1.4.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.2",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "react-scripts": "5.0.1"
   },
   "husky": {
     "hooks": {
@@ -49,8 +49,10 @@
     ]
   },
   "devDependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "eslint": "^8.46.0",
+    "eslint-config-prettier": "^8.9.0",
     "eslint-config-standard-with-typescript": "^37.0.0",
     "eslint-plugin-import": "^2.28.0",
     "eslint-plugin-n": "^16.0.1",
@@ -59,6 +61,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
     "prettier": "^3.0.0",
+    "react-redux": "^8.1.1",
     "stylelint": "^15.10.2",
     "stylelint-config-standard": "^34.0.0",
     "typescript": "^3.2.1 || ^4"

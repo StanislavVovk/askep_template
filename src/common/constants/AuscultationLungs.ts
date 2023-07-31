@@ -1,4 +1,4 @@
-import { type SymptomsModel } from '../models/SymptomsModel';
+import { type SymptomsModel } from '../models/SymptomsModel'
 
 export const AuscultationLungs: SymptomsModel = {
   symptomGroupName: 'Шкіра та видимі слизові',
@@ -40,4 +40,4 @@ export const AuscultationLungs: SymptomsModel = {
       symptomClassName: 'conclusion_prev_ausc_lungs_9'
     }
   ]
-};
+}

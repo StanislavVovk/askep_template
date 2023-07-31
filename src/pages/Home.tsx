@@ -1,6 +1,6 @@
-import { Button, Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { RoutesEnum } from '../common/common';
+import { Button, Container } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { RoutesEnum } from '../common/common'
 
 const LinkToEditor = () => {
   return (
@@ -13,8 +13,8 @@ const LinkToEditor = () => {
         Open editor
       </Link>
     </Button>
-  );
-};
+  )
+}
 
 // export const Home: FC<TemplateModel[]> = (templates) => {
 export const Home = () => {
@@ -28,5 +28,5 @@ export const Home = () => {
       <LinkToEditor />
       {/* </ToastContainer> */}
     </Container>
-  );
-};
+  )
+}

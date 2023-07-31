@@ -1,4 +1,4 @@
-import { type SymptomsModel } from '../models/SymptomsModel';
+import { type SymptomsModel } from '../models/SymptomsModel'
 
 export const CentralNervousSystemDamage: SymptomsModel = {
   symptomGroupName: 'Ознаки ураження ЦНС',
@@ -44,4 +44,4 @@ export const CentralNervousSystemDamage: SymptomsModel = {
       symptomClassName: 'conclusion_prev_central_nervous_system_damage_↨'
     }
   ]
-};
+}

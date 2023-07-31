@@ -1,4 +1,4 @@
-import { type SymptomsModel } from '../models/SymptomsModel';
+import { type SymptomsModel } from '../models/SymptomsModel'
 
 export const RespiratorySystemData: SymptomsModel = {
   symptomGroupName: 'Дихальна система',
@@ -32,4 +32,4 @@ export const RespiratorySystemData: SymptomsModel = {
       symptomClassName: 'conclusion_prev_resp_sys_7'
     }
   ]
-};
+}

@@ -1,4 +1,4 @@
-import { type SymptomsModel } from '../models/SymptomsModel';
+import { type SymptomsModel } from '../models/SymptomsModel'
 
 export const PatientConscience: SymptomsModel = {
   symptomGroupName: 'Свідомість',
@@ -32,4 +32,4 @@ export const PatientConscience: SymptomsModel = {
       symptomClassName: 'conclusion_prev_object_conscience_state'
     }
   ]
-};
+}

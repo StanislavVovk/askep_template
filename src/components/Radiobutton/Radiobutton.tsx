@@ -1,7 +1,7 @@
-import type { ChangeEvent, FC } from 'react';
-import { useState } from 'react';
-import { type SymptomGroup } from '../../common/models/SymptomsModel';
-import { FormCheck } from 'react-bootstrap';
+import type { ChangeEvent, FC } from 'react'
+import { useState } from 'react'
+import { type SymptomGroup } from '../../common/models/SymptomsModel'
+import { FormCheck } from 'react-bootstrap'
 
 interface IRadiobuttonProps {
   symptomData: SymptomGroup
@@ -10,10 +10,10 @@ interface IRadiobuttonProps {
 
 // todo think about component reusability. Same as Checkbox component
 export const Radiobutton: FC<IRadiobuttonProps> = ({ symptomData, id }) => {
-  const [radiobuttonStatus, setRadiobuttonStatus] = useState('');
+  const [radiobuttonStatus, setRadiobuttonStatus] = useState('')
   const handleCheckboxClick = (event: ChangeEvent<HTMLInputElement>) => {
-    setRadiobuttonStatus(event.target.value);
-  };
+    setRadiobuttonStatus(event.target.value)
+  }
 
   return (
     <FormCheck
@@ -24,5 +24,5 @@ export const Radiobutton: FC<IRadiobuttonProps> = ({ symptomData, id }) => {
       onChange={handleCheckboxClick}
       label={symptomData.symptom}
     ></FormCheck>
-  );
-};
+  )
+}

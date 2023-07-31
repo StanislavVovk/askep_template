@@ -1,4 +1,4 @@
-import { type SymptomsModel } from '../models/SymptomsModel';
+import { type SymptomsModel } from '../models/SymptomsModel'
 
 export const AnamnesisVitae: SymptomsModel = {
   symptomGroupName: 'Анамнез життя',
@@ -68,4 +68,4 @@ export const AnamnesisVitae: SymptomsModel = {
       symptomClassName: 'conclusion_prev_anamnesis_life_16'
     }
   ]
-};
+}

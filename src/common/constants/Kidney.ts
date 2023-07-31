@@ -1,4 +1,4 @@
-import { type SymptomsModel } from '../models/SymptomsModel';
+import { type SymptomsModel } from '../models/SymptomsModel'
 
 export const Kidney: SymptomsModel = {
   symptomGroupName: 'Симптом Пастернацького',
@@ -20,4 +20,4 @@ export const Kidney: SymptomsModel = {
       symptomClassName: 'conclusion_prev_kidney_↨'
     }
   ]
-};
+}

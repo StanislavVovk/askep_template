@@ -1,5 +1,5 @@
-import type { FC, ReactNode } from 'react';
-import { Button, Toast } from 'react-bootstrap';
+import type { FC, ReactNode } from 'react'
+import { Button, Toast } from 'react-bootstrap'
 
 interface ITemplate {
   templateName: string
@@ -19,5 +19,5 @@ export const Template: FC<ITemplate> = ({ templateName, children }) => {
         </>
       </Toast.Body>
     </Toast>
-  );
-};
+  )
+}

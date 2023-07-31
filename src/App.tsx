@@ -1,7 +1,7 @@
-import { RoutesEnum } from './common/common';
-import { Home, TemplateEditor } from './pages/common';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { ErrorComponent, Layout } from './components/common';
+import { RoutesEnum } from './common/common'
+import { Home, TemplateEditor } from './pages/common'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { ErrorComponent, Layout } from './components/common'
 
 function App () {
   return (
@@ -22,7 +22,7 @@ function App () {
         </Routes>
       </Router>
     </Layout>
-  );
+  )
 }
 
-export default App;
+export default App

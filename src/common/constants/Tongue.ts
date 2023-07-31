@@ -1,4 +1,4 @@
-import { type SymptomsModel } from '../models/SymptomsModel';
+import { type SymptomsModel } from '../models/SymptomsModel'
 
 export const Tongue: SymptomsModel = {
   symptomGroupName: 'Язик',
@@ -40,4 +40,4 @@ export const Tongue: SymptomsModel = {
       symptomClassName: 'conclusion_prev_tongue_9'
     }
   ]
-};
+}
