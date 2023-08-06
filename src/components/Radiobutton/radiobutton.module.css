@@ -1,4 +1,0 @@
-label.text-checkbox input[type='radio'][checked='true'] + span {
-  text-decoration: underline;
-  font-weight: bold;
-}
