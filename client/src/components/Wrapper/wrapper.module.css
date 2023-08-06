@@ -1,0 +1,8 @@
+.Wrapper {
+  background-color: #f8faff;
+  padding: 1rem 0.75rem 1rem 0.75rem;
+  border-radius: 25px;
+}
+.Wrapper > *:not(input, textarea) {
+  padding: 0 1.25rem 0 1.25rem;
+}
