@@ -1,5 +1,4 @@
 import { RoutesEnum } from './enums/Routes'
-
 import { type TemplateModel } from './models/TemplateModel'
 import { type SymptomGroup, type SymptomsModel } from './models/SymptomsModel'
 import {
@@ -13,6 +12,7 @@ import {
 } from './constants/common'
 import { useAppDispatch, useAppSelector } from './hooks/hooks'
 import { useAppForm } from './hooks/useAppForm'
+import {API_PATH} from "./enums/API_PATH";
 
 export {
   RoutesEnum,
@@ -22,7 +22,8 @@ export {
   Scabies,
   Pediculosis,
   SymptomsTextareaData,
-  UseFormMode
+  UseFormMode,
+  API_PATH
 }
 export { useAppSelector, useAppDispatch, useAppForm }
 
