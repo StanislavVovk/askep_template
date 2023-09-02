@@ -1,81 +1,77 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator'
 
 class TemplateData {
   @IsNotEmpty()
   @IsString()
-  conclusion_prev_anamnesis_life: string;
+  conclusion_prev_anamnesis_life: string
 
   @IsNotEmpty()
   @IsString()
-  conclusion_prev_kidney: string;
+  conclusion_prev_kidney: string
 
   @IsNotEmpty()
   @IsString()
-  conclusion_prev_liver: string;
+  conclusion_prev_liver: string
 
   @IsNotEmpty()
   @IsString()
-  conclusion_prev_muscul_sys: string;
+  conclusion_prev_muscul_sys: string
 
   @IsNotEmpty()
   @IsString()
-  conclusion_prev_object_allergic: string;
+  conclusion_prev_object_allergic: string
 
   @IsNotEmpty()
   @IsString()
-  conclusion_prev_object_auscultation: string;
+  conclusion_prev_object_auscultation: string
 
   @IsNotEmpty()
   @IsString()
-  conclusion_prev_object_cns: string;
+  conclusion_prev_object_cns: string
 
   @IsNotEmpty()
   @IsString()
-  conclusion_prev_object_complaints: string;
+  conclusion_prev_object_complaints: string
 
   @IsNotEmpty()
   @IsString()
-  conclusion_prev_object_conscience_state: string;
+  conclusion_prev_object_conscience_state: string
 
   @IsNotEmpty()
   @IsString()
-  conclusion_prev_object_general_condition: string;
+  conclusion_prev_object_general_condition: string
 
   @IsNotEmpty()
   @IsString()
-  conclusion_prev_object_heart: string;
+  conclusion_prev_object_heart: string
 
   @IsNotEmpty()
   @IsString()
-  conclusion_prev_object_membranes: string;
+  conclusion_prev_object_membranes: string
 
   @IsNotEmpty()
   @IsString()
-  conclusion_prev_object_stomach: string;
+  conclusion_prev_object_stomach: string
 
   @IsNotEmpty()
   @IsString()
-  conclusion_prev_object_tongue: string;
+  conclusion_prev_object_tongue: string
 
   @IsNotEmpty()
   @IsString()
-  conclusion_prev_pediculosis: string;
+  conclusion_prev_pediculosis: string
 
   @IsNotEmpty()
   @IsString()
-  conclusion_prev_scabies: string;
+  conclusion_prev_scabies: string
 }
 
 export class TemplateInfo {
   @IsNotEmpty()
   @IsString()
-  readonly templateName: string;
-
-  @IsNotEmpty()
-  @IsString()
-  readonly userId: string;
+  readonly templateName: string
 }
 
 export class TemplateDto extends TemplateInfo {
-  readonly templateData: TemplateData;
+  readonly templateData: TemplateData
 }

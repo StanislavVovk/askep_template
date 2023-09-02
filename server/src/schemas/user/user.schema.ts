@@ -1,24 +1,26 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
+import { Document, HydratedDocument } from 'mongoose'
 
 @Schema({
-  timestamps: true,
+  timestamps: true
 })
 export class User extends Document {
   @Prop({
     unique: [true, 'User with this name already exists'],
-    required: [true, 'Name is required field'],
+    required: [true, 'Name is required field']
   })
-  name: string;
+  name: string
 
   @Prop({
     unique: [true, 'Duplicate email entered'],
-    required: [true, 'Email is required field'],
+    required: [true, 'Email is required field']
   })
-  email: string;
+  email: string
 
   @Prop({ required: [true, 'Password is required field'] })
-  password: string;
+  password: string
 }
 
-export const UserSchema = SchemaFactory.createForClass(User);
+export const UserSchema = SchemaFactory.createForClass(User)
+
+export type UserType = HydratedDocument<User>

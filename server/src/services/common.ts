@@ -1,2 +1,2 @@
-export { AuthService } from './auth/auth.service';
-export { TemplateService } from './template/template.service';
+export { AuthService } from './auth/auth.service'
+export { TemplateService } from './template/template.service'

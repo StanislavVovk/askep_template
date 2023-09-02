@@ -4,56 +4,76 @@ import {
   Delete,
   Get,
   Post,
-  Put, Query,
-  Req,
+  Put,
+  Query,
   UseGuards,
-} from '@nestjs/common';
-import { apiRoutes } from 'common/common';
-import { TemplateService } from 'services/common';
+  Req
+} from '@nestjs/common'
+import { apiRoutes } from 'common/common'
+import { RequestType } from 'interfaces/RequestType'
+import { User } from 'schemas/user/user.schema'
+import { TemplateService } from 'services/common'
 import {
   TemplateDeleteDto,
   TemplateDto,
   TemplateQueryDto,
-  TemplateUpdateDto,
-} from 'dto/common';
-import { TemplateResponse } from 'interfaces/TemplateInterfaces';
-import { JwtAuthGuard } from 'guards/common';
+  TemplateUpdateDto
+} from 'dto/common'
+import { TemplateResponse } from 'interfaces/TemplateInterfaces'
+import { JwtAuthGuard } from 'guards/common'
 
-// case: other user which know his Bearer jwt can CRUD other user's template data
-// todo how can I know that true user CRUD his data
-// todo thunk about adding :id to path and then take templateId from path
 @Controller(apiRoutes.TEMPLATE)
 export class TemplateController {
   constructor(private templateService: TemplateService) {}
   @UseGuards(JwtAuthGuard)
-  @Get('templates')
+  @Get()
   getTemplates(
     @Query() templateQueryDto: TemplateQueryDto,
+    @Req() data: RequestType<User>
   ): Promise<TemplateResponse> {
-    return this.templateService.getTemplatesByParameter(templateQueryDto);
+    const userId = data.user._id.toString()
+    return this.templateService.getTemplatesByParameter(
+      templateQueryDto,
+      userId
+    )
   }
+
   @UseGuards(JwtAuthGuard)
-  @Post('template')
-  createTemplate(@Body() templateDTO: TemplateDto): Promise<any> {
-    return this.templateService.createTemplate(templateDTO);
+  @Post('create-template')
+  createTemplate(
+    @Body() templateDTO: TemplateDto,
+    @Req() data: RequestType<User>
+  ): Promise<TemplateResponse> {
+    const userId = data.user._id
+    return this.templateService.createTemplate(templateDTO, userId)
   }
   @UseGuards(JwtAuthGuard)
   @Get('template')
   getTemplate(
     @Query() templateQueryDto: TemplateQueryDto,
+    @Req() data: RequestType<User>
   ): Promise<TemplateResponse> {
-    return this.templateService.getTemplateByParameter(templateQueryDto);
+    const userId = data.user._id.toString()
+    return this.templateService.getTemplateByParameter(templateQueryDto, userId)
   }
 
   @UseGuards(JwtAuthGuard)
   @Put('template')
-  updateTemplate(@Body() templateUpdateDto: TemplateUpdateDto) {
-    return this.templateService.updateTemplate(templateUpdateDto);
+  updateTemplate(
+    @Body() templateUpdateDto: TemplateUpdateDto,
+    @Req() data: RequestType<User>
+  ): Promise<TemplateResponse> {
+    const userId = data.user._id
+    return this.templateService.updateTemplate(templateUpdateDto, userId)
   }
 
   @UseGuards(JwtAuthGuard)
   @Delete('template')
-  deleteTemplate(@Body() templateDeleteDto: TemplateDeleteDto) {
-    return this.templateService.deleteTemplate(templateDeleteDto);
+  deleteTemplate(
+    @Body() templateDeleteDto: TemplateDeleteDto,
+    @Req() data: RequestType<User>
+  ): Promise<TemplateResponse> {
+    const userId = data.user._id
+    return this.templateService.deleteTemplate(templateDeleteDto, userId)
   }
 }

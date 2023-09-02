@@ -1,10 +1,13 @@
-import type { FC } from 'react'
+import type { FC, ReactNode } from 'react'
 import { Container } from 'react-bootstrap'
 
-export const ErrorComponent: FC = () => {
+interface IErrorComponent {
+  children: ReactNode | ReactNode[] | string
+}
+export const ErrorComponent: FC<IErrorComponent> = ({ children }) => {
   return (
     <Container className={'justify-content-center align-items-center'}>
-      <h1 className={'fw-bold'}>Whoops something went wrong</h1>
+      {children}
     </Container>
   )
 }

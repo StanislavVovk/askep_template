@@ -4,6 +4,7 @@ import styles from './wrapper.module.css'
 interface IWrapperProps {
   children: ReactNode | ReactNode[]
   customStyle?: string
+  className?: string
 }
 
 export const Wrapper: FC<IWrapperProps> = ({ children, customStyle = '' }) => {

@@ -1,0 +1,12 @@
+.SignWrapper {
+  width: 600px;
+  min-width: 200px;
+}
+
+.SubmitButton {
+  font-weight: bold;
+  width: 150px;
+  height: 45px;
+  font-size: 1.2rem;
+  border-radius: 25px;
+}
