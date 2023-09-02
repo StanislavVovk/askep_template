@@ -1,4 +1,4 @@
 export enum apiRoutes {
   AUTH = 'auth',
-  TEMPLATE = 'template',
+  TEMPLATE = 'template'
 }

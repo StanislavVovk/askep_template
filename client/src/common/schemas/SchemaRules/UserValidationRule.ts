@@ -1,0 +1,6 @@
+export const UserValidationRule =  {
+  USERNAME_MIN_LENGTH: 2,
+  PASSWORD_MIN_LENGTH: 6,
+  USERNAME_MAX_LENGTH: 30,
+  PASSWORD_MAX_LENGTH: 30
+}

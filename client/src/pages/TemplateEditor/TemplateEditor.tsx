@@ -1,6 +1,6 @@
 import { Button, Container, Form } from 'react-bootstrap'
 
-import { SymptomsWrapper } from '../components/SymptomsWrapper/SymptomsWrapper'
+import { SymptomsWrapper } from 'components/SymptomsWrapper/SymptomsWrapper'
 import {
   Kidney,
   Liver,
@@ -9,11 +9,11 @@ import {
   Scabies,
   SymptomsTextareaData,
   useAppForm
-} from '../common/common'
+} from 'common/common'
 import { type SubmitHandler } from 'react-hook-form'
-import { FormDefaultValue } from '../common/constants/FormDefaultValue'
-import { Input } from '../components/Input/Input'
-import { InputGroup } from '../components/InputGroup/InputGroup'
+import { FormDefaultValue } from 'common/constants/DefaultValues/FormDefaultValue'
+import { Input } from 'components/Input/Input'
+import { SymptomsInputGroup } from 'components/InputGroup/SymptomsInputGroup'
 
 export const TemplateEditor = () => {
   // todo work with styles
@@ -40,7 +40,11 @@ export const TemplateEditor = () => {
         />
         <h4>Скарги пацієнта</h4>
         <hr />
-        <InputGroup control={control} inputType={'radio'} inputData={PatientConscience} />
+        <SymptomsInputGroup
+          control={control}
+          inputType={'radio'}
+          inputData={PatientConscience}
+        />
         {SymptomsTextareaData.map((textareaData, key) => (
           <SymptomsWrapper
             key={key}
@@ -48,10 +52,14 @@ export const TemplateEditor = () => {
             control={control}
           />
         ))}
-        <InputGroup control={control} inputType={'radio'} inputData={Kidney} />
-        <InputGroup control={control} inputType={'radio'} inputData={Liver} />
-        <InputGroup control={control} inputType={'radio'} inputData={Pediculosis} />
-        <InputGroup control={control} inputType={'radio'} inputData={Scabies} />
+        <SymptomsInputGroup control={control} inputType={'radio'} inputData={Kidney} />
+        <SymptomsInputGroup control={control} inputType={'radio'} inputData={Liver} />
+        <SymptomsInputGroup
+          control={control}
+          inputType={'radio'}
+          inputData={Pediculosis}
+        />
+        <SymptomsInputGroup control={control} inputType={'radio'} inputData={Scabies} />
         <div
           className={
             'd-flex justify-content-center flex-column align-items-center'

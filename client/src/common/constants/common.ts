@@ -1,18 +1,7 @@
-import { PatientConscience } from './PatientConscience'
-import { Liver } from './Liver'
-import { Kidney } from './Kidney'
-import { Scabies } from './Scabies'
-import { Pediculosis } from './Pediculosis'
-import { SymptomsTextareaData } from './Symptoms'
-
-import { UseFormMode } from './UseMode'
-
-export {
-  SymptomsTextareaData,
-  PatientConscience,
-  Liver,
-  Kidney,
-  Scabies,
-  Pediculosis,
-  UseFormMode
-}
+export { PatientConscience } from './PatientConscience'
+export { Liver } from './Liver'
+export { Kidney } from './Kidney'
+export { Scabies } from './Scabies'
+export { Pediculosis } from './Pediculosis'
+export { SymptomsTextareaData } from './Symptoms'
+export * from './DefaultValues/common'

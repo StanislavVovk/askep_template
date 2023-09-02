@@ -1,19 +1,6 @@
 import { Button, Container } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import { RoutesEnum } from '../common/common'
+import { RoutesEnum } from 'common/common'
 
-const LinkToEditor = () => {
-  return (
-    <Button variant={'outline-primary'}>
-      <Link
-        to={RoutesEnum.TEMPLATE_HUB}
-        target={'_blank'}
-        rel={'noopener noreferrer'}>
-        Open editor
-      </Link>
-    </Button>
-  )
-}
 
 // export const Home: FC<TemplateModel[]> = (templates) => {
 export const Home = () => {
@@ -24,7 +11,14 @@ export const Home = () => {
       {/* {templates.map((template, id) => { */}
       {/*    return <Template key={id} templateName={template.templateName}/> */}
       {/* })} */}
-      <LinkToEditor />
+      <Button variant={'outline-primary'}>
+      <a
+        href={RoutesEnum.HOME}
+        target={'_blank'}
+        rel="noopener noreferrer">
+        Open editor
+      </a>
+    </Button>
       {/* </ToastContainer> */}
     </Container>
   )

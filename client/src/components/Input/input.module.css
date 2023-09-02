@@ -1,0 +1,11 @@
+.PasswordButton {
+  width: 45px;
+  height: 50px;
+  border: 1px solid #ced4da;
+  background-color: #ffffff;
+  border-radius: 21px;
+}
+
+.PasswordInput {
+  border-radius: 21px 0 0 21px !important;
+}

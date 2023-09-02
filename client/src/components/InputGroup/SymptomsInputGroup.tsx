@@ -1,8 +1,8 @@
 import type { FC, HTMLInputTypeAttribute } from 'react'
-import { Wrapper } from '../Wrapper/Wrapper'
-import { type SymptomsModel } from '../../common/common'
-import { Input } from '../Input/Input'
 import { type Control } from 'react-hook-form'
+import { type SymptomsModel } from 'common/common'
+import { Input } from '../Input/Input'
+import { Wrapper } from '../Wrapper/Wrapper'
 
 interface IInputGroupProps {
   inputType: HTMLInputTypeAttribute
@@ -10,7 +10,8 @@ interface IInputGroupProps {
   control: Control<Record<string, any>>
 }
 
-export const InputGroup: FC<IInputGroupProps> = ({
+// todo reorganise this component for better reusability
+export const SymptomsInputGroup: FC<IInputGroupProps> = ({
   control,
   inputType,
   inputData

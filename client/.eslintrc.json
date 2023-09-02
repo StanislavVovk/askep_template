@@ -49,6 +49,7 @@
     "react-hooks/exhaustive-deps": "error",
     "@typescript-eslint/restrict-plus-operands": "off",
     "no-console": "off",
-    "@typescript-eslint/indent": "off"
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/promise-function-async": "off"
   }
 }

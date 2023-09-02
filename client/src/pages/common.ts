@@ -1,4 +1,5 @@
-import { Home } from './Home'
-import { TemplateEditor } from './TemplateEditor'
+import { Home } from './Home/Home'
+import { Sign } from './Sign/Sign'
+import { TemplateEditor } from './TemplateEditor/TemplateEditor'
 
-export { Home, TemplateEditor }
+export { Home, TemplateEditor, Sign }

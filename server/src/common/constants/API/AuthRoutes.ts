@@ -1,4 +1,4 @@
 export enum AuthRoutes {
   SIGNUP = '/signup',
-  LOGIN = '/login',
+  LOGIN = '/login'
 }
