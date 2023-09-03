@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from './hooks/hooks'
 import { useAppForm } from './hooks/useAppForm'
 import {API_PATH, AUTH_API} from "./enums/API_PATH";
 export * from './constants/common'
-
+export * from './interfaces/common'
 export {
   RoutesEnum,
   API_PATH,

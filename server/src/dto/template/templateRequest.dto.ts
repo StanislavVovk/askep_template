@@ -1,23 +1,13 @@
 import { IsNotEmpty, IsOptional, IsString } from 'class-validator'
 import { TemplateDto } from './template.dto'
 
-export class TemplateQuery {
-  @IsString()
-  @IsNotEmpty()
-  parameter: string
-
-  @IsString()
-  @IsNotEmpty()
-  value: string
-}
-// too many Dto?
-
 export class TemplateQueryDto {
   @IsString()
   @IsOptional()
   readonly queryFilter?: string
 }
 
+// fixme use Request :id instead of using templateId
 export class TemplateUpdateDto extends TemplateDto {
   @IsNotEmpty()
   @IsString()

@@ -7,7 +7,7 @@ export const UserLoginDefaultValues = {
 
 export const UserRegistrationDefaultValues = {
   [UserPayloadKey.EMAIL]: '',
-  [UserPayloadKey.USERNAME]: '',
+  [UserPayloadKey.NAME]: '',
   [UserPayloadKey.PASSWORD]: '',
   [UserPayloadKey.REPEAT_PASSWORD]: '',
 }

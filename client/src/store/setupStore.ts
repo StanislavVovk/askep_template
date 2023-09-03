@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import authReducer from 'store/auth/authSlice'
-import { Auth, Template } from 'services/service'
+import { Auth, Template, Storage } from 'services/service'
 import {
   persistStore,
   persistReducer,
@@ -13,7 +13,11 @@ import {
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
-
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['userData'], // Вказуємо, яке поле userData слід зберігати.
+};
 
 const persistConfig = {
   key: 'root',
@@ -22,7 +26,7 @@ const persistConfig = {
 }
 
 const rootReducer = combineReducers({
-  authReducer
+  authReducer: persistReducer(authPersistConfig, authReducer)
 })
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
@@ -31,14 +35,13 @@ export const setupStore = () =>
     reducer: persistedReducer,
     middleware: getDefaultMiddleware =>
       getDefaultMiddleware({
-        serializableCheck: {
-          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-        },
+        serializableCheck: false,
         thunk: {
           extraArgument: {
             service: {
               Auth,
-              Template
+              Template,
+              Storage
             }
           }
         }

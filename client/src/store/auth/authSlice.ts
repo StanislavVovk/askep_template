@@ -1,6 +1,11 @@
-import { createSlice, isAnyOf, type PayloadAction, type SerializedError } from '@reduxjs/toolkit'
-import { type UserModel } from 'common/interfaces/AuthResponse'
-import { login, type ServerError, signUp } from 'store/auth/actions/actions'
+import {
+  createSlice,
+  isAnyOf,
+  type PayloadAction,
+  type SerializedError
+} from '@reduxjs/toolkit'
+import type { ServerError, UserModel } from 'common/common'
+import { login, logout, signUp } from './actions/actions'
 
 interface IAuthSliceInitial {
   userData?: UserModel
@@ -19,6 +24,7 @@ export const AuthSlice = createSlice({
   initialState: AuthSliceInitial,
   reducers: {},
   extraReducers: builder => {
+    builder.addCase(logout.fulfilled, state => AuthSliceInitial)
     builder
       .addMatcher(
         isAnyOf(login.fulfilled, signUp.fulfilled),
@@ -28,16 +34,19 @@ export const AuthSlice = createSlice({
           state.isLoading = false
         }
       )
-      .addMatcher(isAnyOf(login.pending, signUp.pending), (state) => {
+      .addMatcher(isAnyOf(login.pending, signUp.pending), state => {
         state.userData = undefined
         state.error = undefined
         state.isLoading = true
       })
-      .addMatcher(isAnyOf(login.rejected, signUp.rejected), (state, payload) => {
-        state.userData = undefined
-        state.isLoading = false
-        state.error = payload.payload as ServerError
-      })
+      .addMatcher(
+        isAnyOf(login.rejected, signUp.rejected),
+        (state, payload) => {
+          state.userData = undefined
+          state.isLoading = false
+          state.error = payload.payload as ServerError
+        }
+      )
   }
 })
 

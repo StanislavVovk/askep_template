@@ -11,7 +11,7 @@ import {
 import { Wrapper } from 'components/Wrapper/Wrapper'
 
 export interface IInput extends Omit<FormCheckProps, 'type'> {
-  control: Control<Record<string, any>, any>
+  control: Control<Record<string, any>>
   errors?: FieldErrors<Record<string, any>>
   inputName: string
   type?: HTMLInputTypeAttribute
