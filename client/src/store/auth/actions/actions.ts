@@ -1,23 +1,20 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import {
-  type LoginQuery,
-  type SignUpQuery
-} from 'common/interfaces/AuthRequest'
-import { type UserModel } from 'common/interfaces/AuthResponse'
+import type {
+  LoginQuery,
+  SignUpQuery,
+  UserModel,
+  ServerError
+} from 'common/common'
 import { type AuthService } from 'services/Auth/Auth.service'
+import { type StorageService } from 'services/Storage/Storage.service'
 import { AuthActionType } from 'store/auth/actions/ActionType'
 
-export interface ServerError {
-  statusCode: number
-  message: string
-  error: string
-}
 export const login = createAsyncThunk<
   UserModel,
   LoginQuery,
   {
     rejectWithValue: ServerError
-    extra: { service: { Auth: AuthService } }
+    extra: { service: { Auth: AuthService; Storage: StorageService } }
   }
 >(
   AuthActionType.LOGIN,
@@ -26,12 +23,13 @@ export const login = createAsyncThunk<
     {
       rejectWithValue,
       extra: {
-        service: { Auth }
+        service: { Auth, Storage }
       }
     }
   ) => {
     try {
       const data = await Auth.login(userData)
+      Storage.setItem('token', data.token)
       return data
     } catch (error) {
       return rejectWithValue(error)
@@ -44,7 +42,7 @@ export const signUp = createAsyncThunk<
   SignUpQuery,
   {
     rejectWithValue: ServerError
-    extra: { service: { Auth: AuthService } }
+    extra: { service: { Auth: AuthService; Storage: StorageService } }
   }
 >(
   AuthActionType.SIGN_UP,
@@ -53,14 +51,39 @@ export const signUp = createAsyncThunk<
     {
       rejectWithValue,
       extra: {
-        service: { Auth }
+        service: { Auth, Storage }
       }
     }
   ) => {
     try {
-      return await Auth.signUp(userData)
+      const data = await Auth.signUp(userData)
+      Storage.setItem('token', data.token)
+      return data
     } catch (error) {
       return rejectWithValue(error)
     }
+  }
+)
+export const logout = createAsyncThunk<
+  null,
+  object,
+  { extra: { service: { Storage: StorageService } } }
+>(
+  AuthActionType.LOGOUT,
+  (
+    _request,
+    {
+      extra: {
+        service: { Storage }
+      }
+    }
+  ) => {
+    // todo probably it would better to use clear storage
+    // fixme search more elegance solution of this case
+    Storage.clearItem('token')
+    Storage.clearItem('persist:root')
+    Storage.clearItem('persist:auth')
+
+    return null
   }
 )

@@ -4,7 +4,7 @@ import {
   type LoginQuery,
   type SignUpQuery
 } from 'common/interfaces/AuthRequest'
-import { type UserModel } from 'common/interfaces/AuthResponse'
+import { type UserModel } from 'common/interfaces/UserModel'
 
 export class AuthService {
   private readonly _apiPath: string

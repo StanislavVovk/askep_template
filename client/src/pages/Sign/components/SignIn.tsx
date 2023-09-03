@@ -5,9 +5,8 @@ import {
   UserPayloadKey,
   RoutesEnum,
   useAppDispatch,
-  useAppSelector
+  useAppSelector, type LoginQuery
 } from 'common/common'
-import { type LoginQuery } from 'common/interfaces/AuthRequest'
 import { ErrorComponent } from 'components/common'
 import { Input } from 'components/Input/Input'
 import { Wrapper } from 'components/Wrapper/Wrapper'

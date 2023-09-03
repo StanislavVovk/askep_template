@@ -8,7 +8,7 @@ export const UserRegistrationSchema = Joi.object({
     'string.email': UserValidationMessage.EMAIL_WRONG,
     'any.required': UserValidationMessage.EMAIL_REQUIRE,
     'string.empty': UserValidationMessage.EMAIL_EMPTY
-  }), [UserPayloadKey.USERNAME]: Joi.string()
+  }), [UserPayloadKey.NAME]: Joi.string()
     .trim()
     .min(UserValidationRule.USERNAME_MIN_LENGTH)
     .max(UserValidationRule.USERNAME_MAX_LENGTH)
