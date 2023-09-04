@@ -1,3 +1,5 @@
+import { TemplateSchema } from 'common/schemas/schemas'
+import { SymptomsFinderComponent } from 'components/FinderComponent/FinderComponent'
 import { Button, Container, Form } from 'react-bootstrap'
 
 import { SymptomsWrapper } from 'components/SymptomsWrapper/SymptomsWrapper'
@@ -8,10 +10,10 @@ import {
   Pediculosis,
   Scabies,
   SymptomsTextareaData,
-  useAppForm
+  useAppForm,
+  TemplateDefaultValue
 } from 'common/common'
 import { type SubmitHandler } from 'react-hook-form'
-import { FormDefaultValue } from 'common/constants/DefaultValues/FormDefaultValue'
 import { Input } from 'components/Input/Input'
 import { SymptomsInputGroup } from 'components/InputGroup/SymptomsInputGroup'
 
@@ -20,7 +22,8 @@ export const TemplateEditor = () => {
 
   const { control, handleSubmit, errors } = useAppForm({
     mode: 'onSubmit',
-    defaultValues: FormDefaultValue
+    defaultValues: TemplateDefaultValue,
+    validationSchema: TemplateSchema
   })
   console.log(errors)
   const handleFormSubmit: SubmitHandler<Record<any, string>> = values => {
@@ -38,6 +41,7 @@ export const TemplateEditor = () => {
           inputName={'template_name'}
           label={'Введіть назву шаблону'}
         />
+        <SymptomsFinderComponent/>
         <h4>Скарги пацієнта</h4>
         <hr />
         <SymptomsInputGroup
@@ -67,7 +71,7 @@ export const TemplateEditor = () => {
           <Button
             className={'fs-5 fw-bold border-2 pointer-event w-25'}
             type={'submit'}
-            variant={'outline-primary'}>
+            variant={'primary'}>
             Зберегти шаблон
           </Button>
         </div>
