@@ -12,8 +12,10 @@ body {
 ul {
   margin: 0;
 }
-/*width: 500px;*/
-/*height: 500px;*/
+.HomePage {
+  width: 500px;
+  height: 500px;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -65,4 +67,5 @@ input {
   --dark-blue: #0467a0;
   --lignt-blue: #299ed6;
   --light-white: #fefdfe;
+  --input-border: 21px;
 }

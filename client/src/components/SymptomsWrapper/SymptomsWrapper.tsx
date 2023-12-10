@@ -1,20 +1,23 @@
 import type { FC } from 'react'
+
+import { type Control } from 'react-hook-form'
+
 // fixme add here import fom common/common
 import type { SymptomsData } from '../../common/constants/Symptoms'
+
 import { Textarea } from '../Textarea/Textarea'
-import { type Control } from 'react-hook-form'
 import {Wrapper} from "../Wrapper/Wrapper";
 
 interface ISymptomsWrapper {
+  control: Control<Record<string, any>>
   placeholder?: string
   symptomData: SymptomsData
-  control: Control<Record<string, any>>
 }
 
 export const SymptomsWrapper: FC<ISymptomsWrapper> = ({
+  control,
   placeholder,
-  symptomData,
-  control
+  symptomData
 }) => {
   return (
     <Wrapper
@@ -27,9 +30,9 @@ export const SymptomsWrapper: FC<ISymptomsWrapper> = ({
         {symptomData.symptoms.join(' / ')}
       </span>
       <Textarea
+        control={control}
         placeholder={placeholder}
         textareaName={symptomData.className}
-        control={control}
       />
     </Wrapper>
   )

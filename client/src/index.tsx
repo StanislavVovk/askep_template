@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './assets/index.css'
-import App from './App'
 import { Provider } from 'react-redux'
-import { store, persistor } from 'store/setupStore'
 import { PersistGate } from 'redux-persist/integration/react'
+import { persistor, store } from 'store/setupStore'
+
+import App from './App'
+import './assets/index.css'
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 

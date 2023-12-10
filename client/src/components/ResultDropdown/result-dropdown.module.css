@@ -1,0 +1,23 @@
+.DropdownWrapper {
+  position: absolute;
+  margin: auto;
+  width: 100%;
+  border: 2px solid #dee2e6;
+  background-color: white;
+  border-radius: 15px 15px 25px 25px;
+  z-index: 20;
+  height: 150px;
+  overflow: auto;
+}
+
+.DropdownWrapper:has(:where(div[id='not-valid'], div[id='no-data'])) {
+  height: auto;
+  cursor: not-allowed;
+}
+
+.DropdownWrapper:not(:has(:where(div[id='not-valid'], div[id='no-data']))) {
+  cursor: pointer;
+}
+.DropdownElements {
+  padding: 1rem 1rem 0.2rem 1rem;
+}

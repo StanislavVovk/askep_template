@@ -1,9 +1,12 @@
 import { PrivateRoute } from 'components/Routes/PrivateRoute'
+
 import { RoutesEnum } from './common/common'
-import { Home, TemplateEditor, Sign } from './pages/common'
+import { Home, Sign, TemplateEditor } from './pages/common'
 // do not use BrowserRouter for build!!!!
 // todo don't forget to change routes path with '#/' when build project
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+
+import { Route, HashRouter as Router, Routes } from 'react-router-dom'
+
 import { Layout } from './components/common'
 
 function App() {
@@ -12,16 +15,16 @@ function App() {
       <Layout>
         <Routes>
           <Route
+            element={<PrivateRoute component={Home}/>}
             index
-            path={RoutesEnum.HOME}
-            element={<PrivateRoute component={Home} />}
+            path={RoutesEnum.TEMPLATE_HUB}
           />
           <Route
-            path={RoutesEnum.TEMPLATE_HUB}
-            element={<PrivateRoute component={TemplateEditor} />}
+            element={<PrivateRoute component={TemplateEditor}/>}
+            path={RoutesEnum.TEMPLATE_EDITOR}
           />
-          <Route path={RoutesEnum.SIGN_IN} element={<Sign />} />
-          <Route path={RoutesEnum.SIGN_UP} element={<Sign />} />
+          <Route element={<Sign/>} path={RoutesEnum.SIGN_IN}/>
+          <Route element={<Sign/>} path={RoutesEnum.SIGN_UP}/>
         </Routes>
       </Layout>
     </Router>

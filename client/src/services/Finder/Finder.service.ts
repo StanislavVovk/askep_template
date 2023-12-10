@@ -1,41 +1,46 @@
 import axios from 'axios'
-import { FinderAPI } from 'common/common'
+import { FinderAPI, type IDiagnosesResponseModel, type ISymptomsResponseModel } from 'common/common'
+const token = localStorage?.getItem('token')
+
+axios.defaults.headers.common = { 'Authorization': `Bearer ${token}` }
+
 
 export class FinderService {
-  private readonly _apiPath: string
-  constructor(_apiPath: string) {
-    this._apiPath = _apiPath
+  private readonly _askepApiPath: string
+  private readonly _diagnosisApiPath: string
+  constructor(_apiPath: string, _diagnosisApiPath: string) {
+    this._askepApiPath = _apiPath
+    this._diagnosisApiPath = _diagnosisApiPath
   }
 
-  findSymptoms(query: string) {
-    const encodedQuery = encodeURIComponent(query)
-
+  findDiagnoses(query: string, limit?: number): Promise<IDiagnosesResponseModel[]> {
     return axios
-      .get(`${this._apiPath}${FinderAPI.SYMPTOMS_API}`, {
+      .get('http://localhost:4001/diagnosis/get-diagnosis', {
         params: {
-          title: encodedQuery,
-          code: encodedQuery,
-          type: 'select2',
-          category_id: '1'
+          diagnosis_query: query,
+          limit
         }
       })
-      .then(data => data)
+      .then(diagnosisData => {
+    // todo fix naming
+       return diagnosisData.data.data as IDiagnosesResponseModel[]
+      })
       .catch(error => {
         throw new Error(error)
       })
   }
 
-  findDiagnoses(query: string) {
-    const encodedQuery = encodeURIComponent(query)
-
+  findSymptoms(query: string) {
     return axios
-      .get(`${this._apiPath}${FinderAPI.DIAGNOSIS_API}`, {
+      .get(`${this._askepApiPath}${FinderAPI.SYMPTOMS_API}`, {
         params: {
-          title: encodedQuery,
-          limit: 30
+          category_id: '1',
+          code: query,
+          title: query,
+          type: 'select2'
         }
       })
-      .then(data => data)
+      .then(data => data.data as ISymptomsResponseModel[])
       .catch(error => {
         throw new Error(error)
       })

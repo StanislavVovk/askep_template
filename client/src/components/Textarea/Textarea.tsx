@@ -1,6 +1,8 @@
-import style from './textarea.module.css'
 import type { FC, TextareaHTMLAttributes } from 'react'
+
 import { type Control, useController } from 'react-hook-form'
+
+import style from './textarea.module.css'
 
 interface ITextarea extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   control: Control<Record<string, any>, any>
@@ -12,17 +14,17 @@ export const Textarea: FC<ITextarea> = ({
   textareaName,
   ...props
 }) => {
-  const { field } = useController({ name: textareaName, control })
+  const { field } = useController({ control, name: textareaName })
 
-  const { value, onChange } = field
+  const { onChange, value } = field
 
   return (
     <textarea
-      value={value}
-      name={textareaName}
-      placeholder={props.placeholder}
       className={style.Textarea}
+      name={textareaName}
       onChange={onChange}
+      placeholder={props.placeholder}
+      value={value}
     />
   )
 }

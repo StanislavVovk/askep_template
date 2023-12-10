@@ -1,30 +1,31 @@
-import {
-  createSlice,
-  isAnyOf,
-  type PayloadAction,
-  type SerializedError
-} from '@reduxjs/toolkit'
 import type { ServerError, UserModel } from 'common/common'
-import { login, logout, signUp } from './actions/actions'
+
+import {
+  type PayloadAction,
+  type SerializedError,
+  createSlice,
+  isAnyOf
+} from '@reduxjs/toolkit'
+
+import { checkTokenValidity, login, logout, signUp } from './actions/actions'
 
 interface IAuthSliceInitial {
-  userData?: UserModel
+  error?: SerializedError | ServerError
   isLoading: boolean
-  error?: ServerError | SerializedError
+  userData?: UserModel
 }
 
 const AuthSliceInitial: IAuthSliceInitial = {
-  userData: undefined,
+  error: undefined,
   isLoading: false,
-  error: undefined
+  userData: undefined
 }
 
 export const AuthSlice = createSlice({
-  name: 'authSlice',
-  initialState: AuthSliceInitial,
-  reducers: {},
   extraReducers: builder => {
-    builder.addCase(logout.fulfilled, state => AuthSliceInitial)
+    builder.addCase(logout.fulfilled, () => AuthSliceInitial)
+    builder.addCase(checkTokenValidity.fulfilled, state => state)
+    builder.addCase(checkTokenValidity.rejected, () => AuthSliceInitial)
     builder
       .addMatcher(
         isAnyOf(login.fulfilled, signUp.fulfilled),
@@ -47,7 +48,10 @@ export const AuthSlice = createSlice({
           state.error = payload.payload as ServerError
         }
       )
-  }
+  },
+  initialState: AuthSliceInitial,
+  name: 'authSlice',
+  reducers: {}
 })
 
 export default AuthSlice.reducer

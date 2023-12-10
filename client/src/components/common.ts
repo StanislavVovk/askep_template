@@ -1,15 +1,16 @@
-import { Loader } from './Loader/Loader'
+import { TemplateComponent } from 'components/Template/TemplateComponent'
+
 import { ErrorComponent } from './ErrorComponent/ErrorComponent'
-import { Template } from './Template/Template'
 import { Footer } from './Footer/Footer'
-import { NavBar } from './NavBar/NavBar'
 import { Layout } from './Layout/Layout'
+import { Loader } from './Loader/Loader'
+import { NavBar } from './NavBar/NavBar'
 
 export {
-  Loader,
   ErrorComponent,
-  Template,
-  NavBar,
   Footer,
   Layout,
+  Loader,
+  NavBar,
+  TemplateComponent,
 }

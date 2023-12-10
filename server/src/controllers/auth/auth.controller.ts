@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common'
+import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common'
+import { JwtAuthGuard } from 'guards/auth.guard'
 import { AuthService } from 'services/common'
 import { SignUpDto, LoginDto } from 'dto/common'
 import { apiRoutes, AuthRoutes } from 'common/common'
@@ -16,5 +17,10 @@ export class AuthController {
   @Get(AuthRoutes.LOGIN)
   login(@Query() loginDto: LoginDto): Promise<AuthResponse> {
     return this.authService.login(loginDto)
+  }
+  @UseGuards(JwtAuthGuard)
+  @Get(AuthRoutes.CHECK_TOKEN_VALIDITY)
+  checkToken(@Query('token') token: string): Promise<void> {
+    return this.authService.checkTokenValidity(token)
   }
 }
