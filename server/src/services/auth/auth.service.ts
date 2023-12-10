@@ -20,7 +20,6 @@ export class AuthService {
 
   async signUp(signUpDto: SignUpDto): Promise<AuthResponse> {
     const { name, email, password } = signUpDto
-    console.log(name, email, password)
     const hashedPassword = await hash(password, Number(env.SALT))
 
     if (await this.userModel.findOne({ email: email }).exec()) {
@@ -39,24 +38,23 @@ export class AuthService {
     return { token: token, name: name, email: email }
   }
 
-  // todo expand response model with email and username (name) fields
   async login(loginDto: LoginDto): Promise<AuthResponse> {
     const { email, password } = loginDto
-
     const user = await this.userModel.findOne({ email })
 
     if (!user) {
       throw new UnauthorizedException('There is no user with this email ')
     }
-
     const isPasswordMatched = await compare(password, user.password)
-
     if (!isPasswordMatched) {
       throw new UnauthorizedException('Invalid email or password')
     }
-
     const token = this.jwtService.sign({ id: user._id })
 
     return { token: token, name: user.name, email: email }
+  }
+
+  async checkTokenValidity(token: string) {
+    this.jwtService.verify(token)
   }
 }

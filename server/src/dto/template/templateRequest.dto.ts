@@ -2,8 +2,8 @@ import { IsNotEmpty, IsOptional, IsString } from 'class-validator'
 import { TemplateDto } from './template.dto'
 
 export class TemplateQueryDto {
-  @IsString()
   @IsOptional()
+  @IsString()
   readonly queryFilter?: string
 }
 

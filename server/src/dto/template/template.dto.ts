@@ -69,7 +69,7 @@ class TemplateData {
 export class TemplateInfo {
   @IsNotEmpty()
   @IsString()
-  readonly templateName: string
+  readonly template_name: string
 }
 
 export class TemplateDto extends TemplateInfo {

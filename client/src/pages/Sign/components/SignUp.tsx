@@ -1,23 +1,25 @@
+import type { FC } from 'react'
+
 import {
-  RoutesEnum, type SignUpQuery, useAppDispatch,
-  useAppForm, useAppSelector,
-  UserPayloadKey,
-  UserRegistrationDefaultValues,
-  UserRegistrationSchema
+  RoutesEnum, type SignUpQuery, UserPayloadKey,
+  UserRegistrationDefaultValues, UserRegistrationSchema,
+  useAppDispatch,
+  useAppForm,
+  useAppSelector
 } from 'common/common'
-import { ErrorComponent } from 'components/common'
-import { type SubmitHandler } from 'react-hook-form'
-import { NavLink, useNavigate } from 'react-router-dom'
 import { Input } from 'components/Input/Input'
 import { Wrapper } from 'components/Wrapper/Wrapper'
-import type { FC } from 'react'
+import { ErrorComponent } from 'components/common'
 import { Button, Form } from 'react-bootstrap'
+import { type SubmitHandler } from 'react-hook-form'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { signUp } from 'store/auth/actions/actions'
+
 import styles from '../sign.module.css'
 export const SignUp: FC = () => {
-  const { control, handleSubmit, errors } = useAppForm({
-    mode: 'all',
+  const { control, errors, handleSubmit } = useAppForm({
     defaultValues: UserRegistrationDefaultValues,
+    mode: 'all',
     validationSchema: UserRegistrationSchema
   })
 
@@ -40,7 +42,7 @@ export const SignUp: FC = () => {
       .unwrap()
       .then(data => {
         if (data) {
-          navigate(RoutesEnum.HOME)
+          navigate(RoutesEnum.SIGN_UP)
         }
       })
       .catch(error => {
@@ -54,44 +56,42 @@ export const SignUp: FC = () => {
         'p-0 pb-2 pt-3 d-flex justify-content-center align-items-center flex-column'
       }>
       <Form
-        onSubmit={handleSubmit(handleFormSubmit)}
-        className={'d-flex flex-column align-items-center w-75'}>
+        className={'d-flex flex-column align-items-center w-75'}
+        onSubmit={handleSubmit(handleFormSubmit)}>
         <Input
           autoComplete={'email'}
-          placeholder={'Email'}
-          label={'Email'}
           control={control}
           inputName={UserPayloadKey.EMAIL}
+          label={'Email'}
+          placeholder={'Email'}
           type={'email'}
         />
         <Input
           autoComplete={'username'}
-          placeholder={'Username'}
-          label={'Username'}
           control={control}
           inputName={UserPayloadKey.NAME}
+          label={'Username'}
+          placeholder={'Username'}
           type={'text'}
         />
         <Input
           autoComplete={'new-password'}
-          placeholder={'Password'}
-          label={'Password'}
           control={control}
           inputName={UserPayloadKey.PASSWORD}
+          label={'Password'}
+          placeholder={'Password'}
           type={'password'}
         />
         <Input
           autoComplete={'new-password'}
-          label={'Repeat password'}
-          placeholder={'Repeat password'}
           control={control}
           inputName={UserPayloadKey.REPEAT_PASSWORD}
+          label={'Repeat password'}
+          placeholder={'Repeat password'}
           type={'password'}
         />
-        <ErrorComponent>
-          {authError?.message}
-        </ErrorComponent>
-        <Button type={'submit'} className={`${styles.SubmitButton} mb-4`}>
+        <ErrorComponent errorMessage={authError?.message}/>
+        <Button className={`${styles.SubmitButton} mb-4`} type={'submit'}>
           Submit
         </Button>
       </Form>
@@ -101,8 +101,8 @@ export const SignUp: FC = () => {
         }>
         <span className={'fw-bold fs-5'}>Already have account?</span>
         <NavLink
-          to={RoutesEnum.SIGN_IN}
-          className={'fw-bold fst-italic fs-5 text-decoration-none '}>
+          className={'fw-bold fst-italic fs-5 text-decoration-none '}
+          to={RoutesEnum.SIGN_IN}>
           Sign in
         </NavLink>
       </div>

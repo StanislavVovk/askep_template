@@ -6,7 +6,7 @@ export const Loader = () => {
       className={
         'justify-content-center align-items-center d-flex flex-column'
       }>
-      <Spinner variant={'primary'} animation={'border'} />
+      <Spinner animation={'border'} variant={'primary'} />
       <h1>Wait a while</h1>
     </div>
   )

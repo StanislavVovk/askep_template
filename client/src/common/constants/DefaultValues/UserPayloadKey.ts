@@ -1,6 +1,6 @@
 export const UserPayloadKey = {
-  NAME: 'name',
   EMAIL: 'email',
+  NAME: 'name',
   PASSWORD: 'password',
   REPEAT_PASSWORD: 'repeat_password'
 };

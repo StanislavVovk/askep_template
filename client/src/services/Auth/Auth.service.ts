@@ -13,13 +13,9 @@ export class AuthService {
     this._apiPath = _apiPath
   }
 
-  signUp(query: SignUpQuery) {
-    return axios
-      .post<UserModel>(
-        `${this._apiPath}${API_PATH.AUTH}${AUTH_API.SIGN_UP}`,
-        query
-      )
-      .then(userData => userData.data)
+  checkTokenValidity(token: string) {
+    return axios.get(`${this._apiPath}${API_PATH.AUTH}${AUTH_API.CHECK_TOKEN_VALIDITY}`, {params: {token}} )
+      .then(data => true)
       .catch((error: AxiosError) => {
         if (isAxiosError(error) && error.response) {
           throw (error.response.data)
@@ -31,9 +27,24 @@ export class AuthService {
   login(query: LoginQuery) {
     return axios
       .get<UserModel>(`${this._apiPath}${API_PATH.AUTH}${AUTH_API.LOGIN}`, {
-        params: query,
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
+        params: query
       })
+      .then(userData => userData.data)
+      .catch((error: AxiosError) => {
+        if (isAxiosError(error) && error.response) {
+          throw (error.response.data)
+        }
+        throw Error(error.message)
+      })
+  }
+
+  signUp(query: SignUpQuery) {
+    return axios
+      .post<UserModel>(
+        `${this._apiPath}${API_PATH.AUTH}${AUTH_API.SIGN_UP}`,
+        query
+      )
       .then(userData => userData.data)
       .catch((error: AxiosError) => {
         if (isAxiosError(error) && error.response) {

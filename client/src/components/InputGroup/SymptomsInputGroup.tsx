@@ -1,20 +1,22 @@
 import type { FC, HTMLInputTypeAttribute } from 'react'
-import { type Control } from 'react-hook-form'
+
 import { type SymptomsModel } from 'common/common'
+import { type Control } from 'react-hook-form'
+
 import { Input } from '../Input/Input'
 import { Wrapper } from '../Wrapper/Wrapper'
 
 interface IInputGroupProps {
-  inputType: HTMLInputTypeAttribute
-  inputData: SymptomsModel
   control: Control<Record<string, any>>
+  inputData: SymptomsModel
+  inputType: HTMLInputTypeAttribute
 }
 
 // todo reorganise this component for better reusability
 export const SymptomsInputGroup: FC<IInputGroupProps> = ({
   control,
-  inputType,
-  inputData
+  inputData,
+  inputType
 }) => {
   return (
     <Wrapper customStyle={'mb-4'}>
@@ -22,13 +24,14 @@ export const SymptomsInputGroup: FC<IInputGroupProps> = ({
       <div className={'d-flex flex-row flex-wrap mt-3'}>
         {inputData.symptoms.map((data, index) => (
           <Input
+            className={'fs-5'}
+            control={control}
+            id={data.symptomClassName.concat(` ${index}`)}
+            inputName={data.symptomClassName}
             key={index}
             label={data.symptom}
-            inputName={data.symptomClassName}
-            id={data.symptomClassName.concat(` ${index}`)}
             type={inputType}
-            control={control}
-            className={'fs-5 pointer-event'}
+            value={data.symptom}
           />
         ))}
       </div>

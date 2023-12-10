@@ -4,7 +4,9 @@
     "standard-with-typescript",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "prettier"
+    "prettier",
+    "plugin:perfectionist/recommended-line-length",
+    "plugin:perfectionist/recommended-natural"
   ],
   "env": {
     "browser": true,
@@ -31,8 +33,15 @@
       "version": "detect"
     }
   },
-  "plugins": ["@typescript-eslint", "react", "react-hooks"],
+  "plugins": ["@typescript-eslint", "react", "react-hooks", "perfectionist"],
   "rules": {
+    "perfectionist/sort-objects": [
+      "error",
+      {
+        "type": "natural",
+        "order": "asc"
+      }
+    ],
     "@typescript-eslint/semi": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-dynamic-delete": "off",

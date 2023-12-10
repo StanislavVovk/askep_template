@@ -26,18 +26,20 @@ export class TemplateService {
     templateQueryDto: TemplateQueryDto,
     userId: string
   ): Promise<TemplateResponse> {
+    // todo add if !
     const { queryFilter } = templateQueryDto
     const filterData = JSON.parse(decodeURIComponent(queryFilter))
     const templateData = await this.templateModel
       .findOne(filterData)
       .where('userId')
       .equals(userId)
+      .select('-userId')
       .exec()
 
     if (templateData)
       return {
         status: HttpStatus.OK,
-        data: templateData
+        templateData: templateData
       }
     throw new NotFoundException('No data with this parameters')
   }
@@ -46,28 +48,46 @@ export class TemplateService {
     templateQueryDto: TemplateQueryDto,
     userId: string
   ): Promise<TemplateResponse> {
-    const { queryFilter } = templateQueryDto
-    const filterData = JSON.parse(decodeURIComponent(queryFilter))
+    if (templateQueryDto) {
+      const { queryFilter } = templateQueryDto
+      const filterData = JSON.parse(decodeURIComponent(queryFilter))
 
-    const templatesData = await this.templateModel
-      .find(filterData)
-      .where('userId')
-      .equals(userId)
-      .exec()
+      const templatesData = await this.templateModel
+        .find(filterData)
+        .where('userId')
+        .equals(userId)
+        .select('-userId')
+        .exec()
 
-    if (templatesData && templatesData.length !== 0) {
-      return { status: HttpStatus.OK, data: templatesData }
+      if (templatesData && templatesData.length !== 0) {
+        return { status: HttpStatus.OK, templateData: templatesData }
+      }
+      throw new NotFoundException('No data with this parameters')
+    } else {
+      const templatesData = await this.templateModel
+        .find({})
+        .where('userId')
+        .equals(userId)
+        .select('-userId')
+        .exec()
+
+      if (templatesData && templatesData.length !== 0) {
+        return { status: HttpStatus.OK, templateData: templatesData }
+      }
+      throw new NotFoundException('No data with this parameters')
     }
-    throw new NotFoundException('No data with this parameters')
+
   }
 
   async createTemplate(templateDto: TemplateDto, userId: string): Promise<TemplateResponse> {
-    const { templateData, templateName } = templateDto
+    const { templateData, template_name } = templateDto
+      // fixme MODEL?????????
     const templateModel = await this.templateModel.create({
-      templateName,
+      templateName: template_name,
       templateData,
       userId
     })
+
     if (templateModel) {
       return {status: HttpStatus.OK}
     }
@@ -78,12 +98,13 @@ export class TemplateService {
     templateUpdateDto: TemplateUpdateDto,
     userId: string
   ): Promise<TemplateResponse> {
-    const { templateData, templateName, templateId } = templateUpdateDto
+    const { templateData, template_name, templateId } = templateUpdateDto
 
     const template = await this.templateModel
-      .updateOne({ _id: templateId }, { templateName, templateData })
+      .updateOne({ _id: templateId }, { templateName: template_name, templateData })
       .where('userId')
       .equals(userId)
+      .select('-userId')
       .exec()
 
     if (!template) throw new NotFoundException('No templates with this id')
@@ -99,6 +120,7 @@ export class TemplateService {
     const data = await this.templateModel
       .findByIdAndDelete(templateId)
       .where('userId')
+      .select('-userId')
       .equals(userId)
 
     if (data)

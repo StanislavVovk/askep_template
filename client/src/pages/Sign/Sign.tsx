@@ -3,10 +3,11 @@ import { SignIn } from 'pages/Sign/components/SignIn'
 import { SignUp } from 'pages/Sign/components/SignUp'
 import { type ReactNode } from 'react'
 import { useLocation } from 'react-router-dom'
+
 import styles from './sign.module.css'
+
 export const Sign = () => {
   const { pathname } = useLocation()
-  console.log(pathname)
   const getScreen = (path: string): ReactNode => {
     switch (path) {
       case RoutesEnum.SIGN_IN: {

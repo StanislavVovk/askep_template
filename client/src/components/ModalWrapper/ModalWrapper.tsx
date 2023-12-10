@@ -1,6 +1,7 @@
+import type { FC, ReactNode } from 'react'
+
 import { ModalComponent } from 'components/Modal/Modal'
 import { useState } from 'react'
-import type { FC, ReactNode } from 'react'
 
 interface IModalWrapperProps {
   children: ReactNode | ReactNode[] | string

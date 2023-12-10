@@ -7,7 +7,7 @@ import { Template } from 'schemas/common'
 
 export type TemplateResponse = {
   status: HttpStatus
-  data?: Template | Template[]
+  templateData?: Template | Template[]
 }
 
 export interface ITemplateData {

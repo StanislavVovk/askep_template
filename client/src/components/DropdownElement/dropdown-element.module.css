@@ -1,0 +1,8 @@
+.DropdownElement {
+  border: 2px solid var(--dark-blue);
+  border-radius: 25px;
+}
+
+.XMark {
+  cursor: pointer;
+}

@@ -1,13 +1,16 @@
-import type { FC, ReactNode } from 'react'
-import { Container } from 'react-bootstrap'
+import type {FC} from 'react'
+
+import { Alert, Container } from 'react-bootstrap'
+
+import styles from './error-component.module.css'
 
 interface IErrorComponent {
-  children: ReactNode | ReactNode[] | string
+  errorMessage?: string
 }
-export const ErrorComponent: FC<IErrorComponent> = ({ children }) => {
-  return (
-    <Container className={'justify-content-center align-items-center'}>
-      {children}
+export const ErrorComponent: FC<IErrorComponent> = ({errorMessage}) => {
+  return errorMessage ? (
+    <Container className={'justify-content-center align-items-center mt-1 mb-0 w-100 p-0 '}>
+      <Alert className={`${styles.ErrorMessage} fw-bold`} variant={'danger'}>{errorMessage}</Alert>
     </Container>
-  )
+  ) : <></>
 }

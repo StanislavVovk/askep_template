@@ -1,0 +1,28 @@
+.Cross {
+  cursor: pointer;
+}
+
+.FinderWrapper {
+  min-height: 75px;
+  border-radius: 25px;
+}
+
+.SymptomsWrapper {
+  min-height: 75px;
+  margin: 0;
+  padding: 0;
+}
+
+.FinderInput,
+.FinderInput:focus,
+.FinderInput:focus-visible {
+  border: 0 !important;
+  min-width: 10px;
+  max-width: 100%;
+  outline: 0;
+}
+
+.DropdownElementsWrapper {
+  column-gap: 1px;
+  row-gap: 10px;
+}

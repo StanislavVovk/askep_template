@@ -1,66 +1,94 @@
-import { ErrorMessage } from '@hookform/error-message'
-import { PasswordInput } from 'components/Input/PasswordInput'
 import type { FC, HTMLInputTypeAttribute } from 'react'
-import { type Control, type FieldErrors, useController } from 'react-hook-form'
+
+import { PasswordInput } from 'components/Input/PasswordInput'
+import { Wrapper } from 'components/Wrapper/Wrapper'
+import { ErrorComponent } from 'components/common'
 import {
   FormCheck,
   type FormCheckProps,
   FormControl,
-  FormLabel,
+  FormLabel, InputGroup
 } from 'react-bootstrap'
-import { Wrapper } from 'components/Wrapper/Wrapper'
+import {
+  type Control,
+  Controller,
+  type FieldErrors,
+} from 'react-hook-form'
 
-export interface IInput extends Omit<FormCheckProps, 'type'> {
+export interface IInput extends Omit<FormCheckProps, 'size' | 'type'>  {
   control: Control<Record<string, any>>
   errors?: FieldErrors<Record<string, any>>
   inputName: string
+  size?: undefined
   type?: HTMLInputTypeAttribute
 }
 
 // todo think about HOC here ??
 // todo divide password input from other
 // fixme render problems
-const Checkbox: FC<FormCheckProps> = ({ ...props }) => {
-  return <FormCheck {...props} />
-}
-const Radiobutton: FC<FormCheckProps> = ({ ...props }) => {
-  return <FormCheck type={'radio'} {...props} />
-}
 
 export const Input: FC<IInput> = ({
   control,
+  errors,
   inputName,
   type = 'text',
   ...props
 }) => {
-  const {
-    field,
-    formState: { errors }
-  } = useController({ name: inputName, control })
+
   // todo refactor this
-
-  const formProps = { ...props, ...field, size: undefined }
-
   switch (type) {
+
     case 'radio':
-      return <Radiobutton {...formProps} />
+      return (
+        <Controller
+          control={control}
+          name={inputName}
+          render={({ field: { onChange, ref } }) => (
+            <FormCheck
+              {...props}
+              name={inputName}
+              onChange={e => {
+                onChange(e.target.value)
+              }}
+              ref={ref}
+              type={'radio'}
+            />
+          )}
+        />
+      )
     case 'checkbox':
-      return <Checkbox {...formProps} />
+      return (
+        <Controller
+          control={control}
+          name={inputName}
+          render={({ field }) => (
+            <FormCheck {...field} {...props} />
+          )}
+        />
+      )
     case 'password':
       return (
-        <PasswordInput
-          formProps={formProps}
-          inputName={inputName}
-          errors={errors}
-        />
+        <PasswordInput control={control} inputName={inputName} {...props} />
       )
     default:
       return (
         <Wrapper
           customStyle={'mb-1 d-flex flex-column align-content-start w-100 '}>
-          <FormLabel className={'fs-4 fw-bold'}>{props.label}</FormLabel>
-          <FormControl type={type} {...formProps} />
-          <ErrorMessage name={inputName} errors={errors} />
+          <Controller
+            control={control}
+            name={inputName}
+            render={({ field, fieldState: {error} }) => {
+              return (
+                <>
+                  <FormLabel className={'fs-4 fw-bold'}>{props.label}</FormLabel>
+                  <InputGroup className={'p-0'}>
+                    <FormControl type={type} {...field} {...props}/>
+                    <ErrorComponent errorMessage={error?.message}/>
+                  </InputGroup>
+                </>
+              )
+            }}
+          />
         </Wrapper>
       )
   }

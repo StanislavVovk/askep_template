@@ -4,19 +4,19 @@ export class StorageService {
     this.storage = storage
   }
 
-  getItem(searchParameter: string) {
-    return this.storage.getItem(searchParameter)
-  }
-
-  setItem(key: string, data: any) {
-    this.storage.setItem(key, data)
+  clearItem(searchParameter: string) {
+    this.storage.removeItem(searchParameter)
   }
 
   clearStorage() {
     this.storage.clear()
   }
 
-  clearItem(searchParameter: string) {
-    this.storage.removeItem(searchParameter)
+  getItem(searchParameter: string) {
+    return this.storage.getItem(searchParameter)
+  }
+
+  setItem(key: string, data: any) {
+    this.storage.setItem(key, data)
   }
 }

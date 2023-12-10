@@ -1,4 +1,4 @@
-export type TemplateRequest = {
+export interface TemplateRequest {
   templateName: string
 
 }

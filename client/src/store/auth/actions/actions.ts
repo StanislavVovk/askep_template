@@ -1,10 +1,11 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
 import type {
   LoginQuery,
+  ServerError,
   SignUpQuery,
-  UserModel,
-  ServerError
+  UserModel
 } from 'common/common'
+
+import { createAsyncThunk } from '@reduxjs/toolkit'
 import { type AuthService } from 'services/Auth/Auth.service'
 import { type StorageService } from 'services/Storage/Storage.service'
 import { AuthActionType } from 'store/auth/actions/ActionType'
@@ -13,18 +14,18 @@ export const login = createAsyncThunk<
   UserModel,
   LoginQuery,
   {
-    rejectWithValue: ServerError
     extra: { service: { Auth: AuthService; Storage: StorageService } }
+    rejectWithValue: ServerError
   }
 >(
   AuthActionType.LOGIN,
   async (
     userData: LoginQuery,
     {
-      rejectWithValue,
       extra: {
         service: { Auth, Storage }
-      }
+      },
+      rejectWithValue
     }
   ) => {
     try {
@@ -41,18 +42,18 @@ export const signUp = createAsyncThunk<
   UserModel,
   SignUpQuery,
   {
-    rejectWithValue: ServerError
     extra: { service: { Auth: AuthService; Storage: StorageService } }
+    rejectWithValue: ServerError
   }
 >(
   AuthActionType.SIGN_UP,
   async (
     userData: SignUpQuery,
     {
-      rejectWithValue,
       extra: {
         service: { Auth, Storage }
-      }
+      },
+      rejectWithValue
     }
   ) => {
     try {
@@ -66,7 +67,7 @@ export const signUp = createAsyncThunk<
 )
 export const logout = createAsyncThunk<
   null,
-  object,
+  string | undefined,
   { extra: { service: { Storage: StorageService } } }
 >(
   AuthActionType.LOGOUT,
@@ -87,3 +88,20 @@ export const logout = createAsyncThunk<
     return null
   }
 )
+
+
+export const checkTokenValidity = createAsyncThunk<
+  boolean,
+  string,
+  { extra: { service: { Auth: AuthService,  Storage: StorageService } } }
+>(
+  AuthActionType.CHECK_VALIDITY,
+  (token, {extra: {service: {Auth, Storage}}}) => {
+    try {
+    return Auth.checkTokenValidity(token)
+    }
+    catch (e) {
+      return false
+    }
+
+})

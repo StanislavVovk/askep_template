@@ -1,0 +1,21 @@
+export enum TemplatePayloadKey {
+  CONCLUSION_PREV_ANAMNESIS_LIFE= 'conclusion_prev_anamnesis_life',
+  CONCLUSION_PREV_KIDNEY= 'conclusion_prev_kidney',
+  CONCLUSION_PREV_LIVER= 'conclusion_prev_liver',
+  CONCLUSION_PREV_MUSCUL_SYS= 'conclusion_prev_muscul_sys',
+  CONCLUSION_PREV_OBJECT_ALLERGIC= 'conclusion_prev_object_allergic',
+  CONCLUSION_PREV_OBJECT_AUSCULTATION= 'conclusion_prev_object_auscultation',
+  CONCLUSION_PREV_OBJECT_CNS= 'conclusion_prev_object_cns',
+  CONCLUSION_PREV_OBJECT_COMPLAINTS= 'conclusion_prev_object_complaints',
+  CONCLUSION_PREV_OBJECT_CONSCIENCE_STATE= 'conclusion_prev_object_conscience_state',
+  CONCLUSION_PREV_OBJECT_GENERAL_CONDITION= 'conclusion_prev_object_general_condition',
+  CONCLUSION_PREV_OBJECT_HEART= 'conclusion_prev_object_heart',
+  CONCLUSION_PREV_OBJECT_MEMBRANES= 'conclusion_prev_object_membranes',
+  CONCLUSION_PREV_OBJECT_STOMACH= 'conclusion_prev_object_stomach',
+  CONCLUSION_PREV_OBJECT_TONGUE= 'conclusion_prev_object_tongue',
+  CONCLUSION_PREV_PEDICULOSIS= 'conclusion_prev_pediculosis',
+  CONCLUSION_PREV_SCABIES= 'conclusion_prev_scabies',
+  HOSP_DIAGONSIS= 'hosp_diagnosis',
+  SYMPTOMS_FINDER= 'select2-selection__rendered',
+  TEMPLATE_NAME= 'template_name'
+}

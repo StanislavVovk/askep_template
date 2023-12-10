@@ -3,16 +3,16 @@ import { Modal } from "react-bootstrap";
 
 interface IModalComponentProps {
   children: ReactNode | ReactNode[] | string,
-  toggleModalVisibility: () => void,
   modalVisibility: boolean
+  toggleModalVisibility: () => void,
 }
-export const ModalComponent: FC<IModalComponentProps> = ({ children, toggleModalVisibility, modalVisibility }) => {
+export const ModalComponent: FC<IModalComponentProps> = ({ children, modalVisibility, toggleModalVisibility }) => {
   return (
     <Modal
-      show={modalVisibility}
-      onHide={toggleModalVisibility}
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      onHide={toggleModalVisibility}
+      show={modalVisibility}
     >
       <Modal.Header className={'style.ModalTop'} closeButton/>
       <Modal.Body className={'style.ModalBody'}>

@@ -1,43 +1,45 @@
-import { joiResolver } from '@hookform/resolvers/joi'
-import { useForm } from 'react-hook-form'
 import type { Schema } from 'joi'
 import type { ValidationMode } from 'react-hook-form'
+
+import { joiResolver } from '@hookform/resolvers/joi'
+import { useForm } from 'react-hook-form'
+
 import { UseFormMode } from '../constants/common'
 
 interface IUseAppForm {
-  validationSchema?: Schema
   defaultValues?: Record<string, any>
   mode?: keyof ValidationMode
+  validationSchema?: Schema
 }
 
 export const useAppForm = ({
-  validationSchema,
   defaultValues,
-  mode
+  mode,
+  validationSchema
 }: IUseAppForm) => {
   const {
+    clearErrors,
     control,
-    formState: { errors, isValid, isDirty },
-    reset,
-    watch,
+    formState: { errors, isDirty, isValid },
     handleSubmit,
+    reset,
     setError,
-    setValue
+    setValue, watch
   } = useForm({
     defaultValues,
-    resolver: validationSchema ? joiResolver(validationSchema) : undefined,
-    mode: mode ?? UseFormMode.onSubmit
+    mode: mode ?? UseFormMode.onSubmit,
+    resolver: validationSchema ? joiResolver(validationSchema) : undefined
   })
-
   return {
+    clearErrors,
     control,
-    isValid,
-    isDirty,
     errors,
-    reset,
-    watch,
     handleSubmit,
+    isDirty,
+    isValid,
+    reset,
     setError,
-    setValue
+    setValue,
+    watch
   }
 }

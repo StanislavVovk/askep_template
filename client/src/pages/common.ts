@@ -2,4 +2,4 @@ import { Home } from './Home/Home'
 import { Sign } from './Sign/Sign'
 import { TemplateEditor } from './TemplateEditor/TemplateEditor'
 
-export { Home, TemplateEditor, Sign }
+export { Home, Sign, TemplateEditor }
